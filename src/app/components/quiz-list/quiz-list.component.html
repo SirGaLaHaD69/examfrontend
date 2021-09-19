@@ -1,0 +1,21 @@
+<mat-card class="example-card my-1" *ngFor="let quiz of quizzes" style="background-color: rgba(36, 38, 39, 0.6);">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{quiz.title}}</mat-card-title>
+      <mat-card-subtitle>{{quiz.subject?.subjectName}}
+        <button mat-button *ngIf="quiz.active" color="warn" class="mx-5">(Active)</button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{quiz.description}}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button [routerLink]="['/admin-dashboard','question-list',quiz.id]" [state]="{ id:1 , title:quiz.title}" routerLinkActive="router-link-active"  color="accent">View</button>
+      <button mat-stroked-button color="accent">Marks: {{quiz.maxMarks}}</button>
+      <button mat-stroked-button color="accent">Questions: {{quiz.noOfQuestions}}</button>
+      <button mat-flat-button color="warn" (click)="deleteHandler(quiz.id)">Delete Quiz</button>
+      <button mat-flat-button color="primary" class="mx-2" (click)="updateQuiz(quiz)">Update Quiz</button>
+
+    </mat-card-actions>
+  </mat-card>
+  <!-- <app-add-quiz></app-add-quiz> -->

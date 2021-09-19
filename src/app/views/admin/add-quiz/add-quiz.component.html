@@ -1,0 +1,51 @@
+<mat-card class="example-card" >
+    <mat-card-header>
+      <mat-card-title> Add New Quiz</mat-card-title>
+    </mat-card-header>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form (ngSubmit)="submitHandler()" #quizForm="ngForm">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Quiz title</mat-label>
+                        <input matInput name="title" [(ngModel)]="quiz.title"  required>
+                        <em *ngIf="quizForm.controls.title?.touched && quizForm.controls.title?.invalid">Required field</em>
+                    </mat-form-field>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>No. Of Questions: </mat-label>
+                                <input matInput name="noOfQuestions" [(ngModel)]="quiz.noOfQuestions" type="number" required>
+                                <em *ngIf="quizForm.controls.noOfQuestions?.touched && quizForm.controls.noOfQuestions?.invalid">Required field</em>
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <mat-form-field class="w-100" appearance="fill">
+                                <mat-label>Maximum Marks: </mat-label>
+                                <input matInput name="maxMarks" type="number" [(ngModel)]="quiz.maxMarks"  required>
+                                <em *ngIf="quizForm.controls.maxMarks?.touched && quizForm.controls.maxMarks?.invalid">Required field</em>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Quiz Description:</mat-label>
+                        <textarea matInput name="description" [(ngModel)]="quiz.description" ></textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose Subject</mat-label>
+                        <mat-select name="subject" [(ngModel)]="quiz.subject.subjectCode" required>
+                          <mat-option  *ngFor="let sub of subjects" [value]="sub.subjectCode">
+                            {{sub.subjectName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    <br>
+                    <mat-slide-toggle color="warn" [(ngModel)]="quiz.active" name="active">Publish</mat-slide-toggle>
+                    <div class="text-center" >
+                        <button [disabled]="quizForm.invalid" mat-raised-button color="primary" type="submit"> Confirm</button>
+                        <button (click)="clearAll()" mat-raised-button color="primary" type="button" > Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+  </mat-card>

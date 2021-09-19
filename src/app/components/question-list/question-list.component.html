@@ -1,0 +1,36 @@
+<h2>Questions on <i style="color: white;">{{quizTitle}}</i></h2>
+<div class="text-center">
+  <button mat-flat-button [routerLink]="['/admin-dashboard','add-question',qid]" [state]="{'title':quizTitle}" color="accent" routerLinkActive="router-link-active" >Add New Question</button>
+</div>
+<mat-card class="example-card mt-1" *ngFor="let q of questions;let i=index" style="background-color: rgba(36, 38, 39, 0.6);">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{i+1}}.  {{q.content}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+          <div class="col-md-5 my-2 offset-md-1">
+              <button class="w-100" mat-stroked-button color="accent">A. {{q.option1}}</button>
+          </div>
+          <div class="col-md-5 my-2">
+            <button class="w-100" mat-stroked-button color="accent">B. {{q.option2}}</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 my-2 offset-md-1">
+            <button  class="w-100" mat-stroked-button color="accent">C. {{q.option3}}</button>
+        </div>
+        <div class="col-md-5 my-2">
+          <button class="w-100" mat-stroked-button color="accent">D. {{q.option4}}</button>
+        </div>
+        </div>
+    <mat-divider></mat-divider>
+    <p class="mt-2 ml-5"><b>Correct Answer: {{q.ans}}</b></p>
+    </mat-card-content>
+  <mat-card-actions>
+    <div class="text-center">
+      <button mat-flat-button color="warn" class="text-center mx-2" (click)="deleteHandler(q.id)"> Delete Question</button>
+      <button mat-flat-button color="primary" class="text-center" (click)="updateHandler(q)"> Update Question</button>
+    </div>
+  </mat-card-actions>
+  </mat-card>

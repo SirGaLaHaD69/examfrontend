@@ -1,0 +1,30 @@
+<mat-card class="example-card" >
+    <mat-card-header>
+      <mat-card-title> Add New Subject</mat-card-title>
+    </mat-card-header>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form (ngSubmit)="submitHandler()" #subjectForm="ngForm">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Subject Name</mat-label>
+                        <input matInput name="subjectName" [(ngModel)]="subject.subjectName" required>
+                        <em *ngIf="subjectForm.controls.subjectName?.touched && subjectForm.controls.subjectName?.invalid">Required field</em>
+                    </mat-form-field>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Professor's Name</mat-label>
+                        <input matInput name="professor" [(ngModel)]="subject.professor" required>
+                        <em *ngIf="subjectForm.controls.professor?.touched && subjectForm.controls.professor?.invalid">Required field</em>
+                    </mat-form-field>
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Subject Description</mat-label>
+                        <textarea matInput name="description" [(ngModel)]="subject.description"></textarea>
+                    </mat-form-field>
+                    <div class="text-center" >
+                        <button [disabled]="subjectForm.invalid" mat-raised-button color="accent" type="submit"> Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    
+  </mat-card>

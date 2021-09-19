@@ -1,0 +1,49 @@
+    <mat-card style="background-color: rgb(49, 98, 138);" class="ml-2 mt-2">
+        <mat-action-list>
+           <mat-card-header><h2 >Menu</h2></mat-card-header>
+            
+            <mat-list-item [routerLink]="['/admin-dashboard/']" routerLinkActive="router-link-active" [ngStyle]="borderStyles">
+                <button mat-icon-button >
+                   <mat-icon>home</mat-icon>
+                   Home
+                </button>
+             </mat-list-item>
+             <mat-list-item  [routerLink]="['/admin-dashboard/profile']" routerLinkActive="router-link-active" [ngStyle]="borderStyles">
+                <button mat-icon-button >
+                   <mat-icon>person</mat-icon>
+                   Profile
+                </button>
+             </mat-list-item>
+             <mat-list-item [routerLink]="['/admin-dashboard/subject-list']" routerLinkActive="router-link-active" [ngStyle]="borderStyles">
+                <button mat-icon-button >
+                   <mat-icon>auto_stories</mat-icon>
+                   Subjects
+                </button>
+             </mat-list-item>
+             <mat-list-item [routerLink]="['/admin-dashboard/add-subject']" routerLinkActive="router-link-active" [ngStyle]="borderStyles">
+                <button mat-icon-button >
+                   <mat-icon>playlist_add</mat-icon>
+                   Add Subject
+                </button>
+             </mat-list-item>
+             <mat-list-item [routerLink]="['/admin-dashboard/quiz-list']" routerLinkActive="router-link-active" [ngStyle]="borderStyles">
+               <button mat-icon-button >
+                   <mat-icon>quiz</mat-icon>
+                   Quizzes
+                </button>
+             </mat-list-item>
+             <mat-list-item [routerLink]="['/admin-dashboard/add-quiz']" routerLinkActive="router-link-active"  [ngStyle]="borderStyles">
+               <button mat-icon-button >
+                  <mat-icon>add</mat-icon>
+                  Add Quiz
+               </button>
+            </mat-list-item>
+             <mat-list-item [ngStyle]="borderStyles">
+               <button mat-icon-button >
+                  <mat-icon>logout</mat-icon>
+                  Logout
+               </button>
+            </mat-list-item>
+             
+        </mat-action-list>
+    </mat-card>
