@@ -6,6 +6,8 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { GuestGuard } from './services/guards/guest.guard';
+import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
+import { QuizResolverService } from './services/quiz-resolver.service';
 import { AddQuestionComponent } from './views/admin/add-question/add-question.component';
 import { AddQuizComponent } from './views/admin/add-quiz/add-quiz.component';
 import { AddSubjectComponent } from './views/admin/add-subject/add-subject.component';
@@ -13,6 +15,9 @@ import { AdminDashboardComponent } from './views/admin/admin-dashboard/admin-das
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignupComponent } from './views/signup/signup.component';
+import { DisplayQuizComponent } from './views/user/display-quiz/display-quiz.component';
+import { LiveQuizComponent } from './views/user/live-quiz/live-quiz.component';
+import { QuizLandingComponent } from './views/user/quiz-landing/quiz-landing.component';
 import { UserDashboardComponent } from './views/user/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
@@ -20,7 +25,8 @@ const routes: Routes = [
   {path:"signup", component:SignupComponent,pathMatch:'full'},
   {path:'login',component:LoginComponent,pathMatch:'full'},
   {path:'user-dashboard',component:UserDashboardComponent,canActivate:[GuestGuard],children:[
-    {path:'profile',component:ProfileComponent}
+    {path:'profile',component:ProfileComponent},
+    {path:"quiz/:subCode",component:DisplayQuizComponent}
   ]},
   {path:'admin-dashboard',component:AdminDashboardComponent,canActivate:[AdminGuard],children:[
     {path:'profile',component:ProfileComponent},
@@ -31,7 +37,9 @@ const routes: Routes = [
     {path:"add-quiz",component:AddQuizComponent},
     {path:"question-list/:quizId",component:QuestionListComponent},
     {path:"add-question/:quizId",component:AddQuestionComponent}
-  ]}
+  ]},
+  {path:"landing-quiz/:qid",component:QuizLandingComponent,pathMatch:'full',canActivate:[GuestGuard],resolve:{'quiz':QuizResolverService}},
+  {path:"live-quiz/:qid",component:LiveQuizComponent,pathMatch:'full',canActivate:[GuestGuard],resolve:{'quiz':QuizResolverService},canDeactivate:[LeaveQuizGuardService]}
 ];
 
 @NgModule({

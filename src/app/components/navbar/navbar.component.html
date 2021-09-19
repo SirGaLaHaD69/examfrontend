@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="nav.visible">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
      <mat-icon>menu_book</mat-icon>
    </button>
@@ -6,8 +6,8 @@
    <span class="example-spacer"></span>
 
    <mat-icon *ngIf="login.isLoggedIn()" >account_circle</mat-icon>
-   <button  *ngIf="login.isLoggedIn()" [routerLink]="['/admin-dashboard']" routerLinkActive="router-link-active"  mat-icon-button class="mr-4 ml-2 example-icon">
-     {{login.getUsername()}}
+   <button  *ngIf="login.isLoggedIn()" [routerLink]="['/admin-dashboard']" routerLinkActive="router-link-active"  mat-icon-button class="mr-5 example-icon">
+      Welcome {{login.getUsername()}}
      </button>
 
      <mat-icon *ngIf="login.isLoggedIn()"  class="ml-5">logout</mat-icon>

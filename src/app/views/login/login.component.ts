@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
           this.snack.open(`Welcome ${this.user.username}`,'',{duration:2000,verticalPosition:'top'})
           const role = this.loginService.getRoles();          
           if(role==='ADMIN'){
-              this.route.navigate(['/admin-dashboard'])
+              this.route.navigate(['/admin-dashboard/profile'])
           }else
-          this.route.navigate(['/user-dashboard'])
+          this.route.navigate(['/user-dashboard/profile'])
         })
       },
       (err)=>{

@@ -1,0 +1,30 @@
+<p>quiz-landing works!</p>
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
+        <h1 class="display-4">{{quiz.title}}</h1>
+        <p class="lead">{{quiz.description}}</p>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <b> Subject:   {{quiz.subject.subjectName}}</b> 
+            </div>
+            <div class="col-md-6 text-right">
+                <b class="mx-5 text-right">Taught By: {{quiz.subject.professor}}</b>
+            </div>
+        </div>
+        <hr class="my-4">
+        <h2 class="display-4 "><i>Instructions</i></h2>
+        <ul>
+            <li >This is a <b>Single-Attempt</b> quiz.</li>
+            <li >Duration of the quiz is <b>{{quiz.noOfQuestions*2}} Minutes</b>.</li>
+            <li >Your responses will be <b>auto-submitted</b> once the timer runs out.</li>
+            <li >There are <b>{{quiz.noOfQuestions}}</b> questions Each carrying {{quiz.maxMarks/quiz.noOfQuestions}}.</li>            
+            <li >There is <b>NO</b> Negative Marking.</li>            
+            <li >Maximum Marks :  <b>{{quiz.maxMarks}}</b></li>
+            <li >To start, click the <b>"Start Quiz"</b> button. When finished, click the <b>"Submit Quiz" button</b>.</li>
+        </ul>
+        <div class="text-center">
+            <button mat-raised-button color="warn" [routerLink]="['/live-quiz',quiz.id]" routerLinkActive="router-link-active" >Start Quiz </button>
+        </div>
+      </div>
+</div>

@@ -18,4 +18,7 @@ export class QuizService {
   public deleteQuiz(id:any){
     return this._http.delete(`${API}/quiz/${id}`)
   }
+  public getQuiz(id:any){
+    return this._http.get(`${API}/quiz/${id}`)
+  }
 }

@@ -1,0 +1,15 @@
+.example-header-image {
+    background-image: url('src/assets/quiz.png');
+    background-size: cover;
+  }
+  .example-card {
+    max-height: 300px;
+    /* max-width: 400px; */
+  }
+  .truncate{
+      display: block;
+      white-space: nowrap;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }

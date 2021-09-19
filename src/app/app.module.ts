@@ -35,6 +35,15 @@ import {MatSelectModule} from '@angular/material/select';
 import { QuestionListComponent } from './components/question-list/question-list.component';
 import { AddQuestionComponent } from './views/admin/add-question/add-question.component';
 import { UserSidebarComponent } from './views/user/user-sidebar/user-sidebar.component';
+import { DisplayQuizComponent } from './views/user/display-quiz/display-quiz.component';
+import { QuizLandingComponent } from './views/user/quiz-landing/quiz-landing.component';
+import { QuizResolverService } from './services/quiz-resolver.service';
+import { QuestionService } from './services/question.service';
+import { QuizService } from './services/quiz.service';
+import { LiveQuizComponent } from './views/user/live-quiz/live-quiz.component';
+import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
+import { AdminGuard } from './services/guards/admin.guard';
+import { GuestGuard } from './services/guards/guest.guard';
 
 
 
@@ -57,6 +66,9 @@ import { UserSidebarComponent } from './views/user/user-sidebar/user-sidebar.com
     QuestionListComponent,
     AddQuestionComponent,
     UserSidebarComponent,
+    DisplayQuizComponent,
+    QuizLandingComponent,
+    LiveQuizComponent,
     
   ],
   imports: [
@@ -77,7 +89,7 @@ import { UserSidebarComponent } from './views/user/user-sidebar/user-sidebar.com
     MatSlideToggleModule,
     MatSelectModule,
   ],
-  providers: [AuthInterceptorProvider,UserService,LoginService],
+  providers: [AuthInterceptorProvider,UserService,LoginService,QuestionService,QuizService,QuizResolverService,LeaveQuizGuardService,AdminGuard,GuestGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

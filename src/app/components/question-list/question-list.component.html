@@ -1,8 +1,8 @@
-<h2>Questions on <i style="color: white;">{{quizTitle}}</i></h2>
+<h1>Questions on <i style="color: white;">{{quizTitle}}</i></h1>
 <div class="text-center">
   <button mat-flat-button [routerLink]="['/admin-dashboard','add-question',qid]" [state]="{'title':quizTitle}" color="accent" routerLinkActive="router-link-active" >Add New Question</button>
 </div>
-<mat-card class="example-card mt-1" *ngFor="let q of questions;let i=index" style="background-color: rgba(36, 38, 39, 0.6);">
+<mat-card class="example-card mt-1" *ngFor="let q of questions;let i=index" style="background-color: rgba(36, 38, 39, 0.726);">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{i+1}}.  {{q.content}}</mat-card-title>
