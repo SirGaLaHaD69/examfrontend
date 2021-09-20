@@ -44,6 +44,7 @@ import { LiveQuizComponent } from './views/user/live-quiz/live-quiz.component';
 import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
 import { AdminGuard } from './services/guards/admin.guard';
 import { GuestGuard } from './services/guards/guest.guard';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -88,6 +89,7 @@ import { GuestGuard } from './services/guards/guest.guard';
     MatTableModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatRadioModule
   ],
   providers: [AuthInterceptorProvider,UserService,LoginService,QuestionService,QuizService,QuizResolverService,LeaveQuizGuardService,AdminGuard,GuestGuard],
   bootstrap: [AppComponent]

@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
 export class QuizLandingComponent implements OnInit {
 
   quiz: any;
-  questions=[]
   constructor(
     private router:Router,
     private route:ActivatedRoute,
@@ -26,6 +25,20 @@ export class QuizLandingComponent implements OnInit {
     this.quiz=this.route.snapshot.data['quiz'];
   }
   
+  startQuiz(){
+    Swal.fire({
+      title: 'Do you want to start??',
+      showDenyButton: true,
+      confirmButtonText: 'Confirm',
+      denyButtonText: 'Cancel',
+      icon:'info'
+    }).then((result) => {
+      if (result.isConfirmed) {
+          this.router.navigate(['/live-quiz',this.quiz.id])
+        }
+      })
+    
+  }
   
 
 }

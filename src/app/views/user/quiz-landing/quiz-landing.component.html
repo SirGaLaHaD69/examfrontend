@@ -1,4 +1,3 @@
-<p>quiz-landing works!</p>
 <div class="container">
     <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
         <h1 class="display-4">{{quiz.title}}</h1>
@@ -24,7 +23,7 @@
             <li >To start, click the <b>"Start Quiz"</b> button. When finished, click the <b>"Submit Quiz" button</b>.</li>
         </ul>
         <div class="text-center">
-            <button mat-raised-button color="warn" [routerLink]="['/live-quiz',quiz.id]" routerLinkActive="router-link-active" >Start Quiz </button>
+            <button mat-raised-button color="warn" (click)="startQuiz()" >Start Quiz </button>
         </div>
       </div>
 </div>

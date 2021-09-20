@@ -1,1 +1,50 @@
-{{questions|json}}
+<div class="container mt-5" *ngIf="!hasSubmitted">
+    <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
+        <h1 class="display-4">{{quiz.title}}</h1>
+        <p class="lead">{{quiz.description}}</p>
+        <hr class="my-4">
+        <mat-card style="background-color: rgba(80, 91, 95, 0.726);;" *ngFor="let q of questions;let i=index" class="my-3">
+        <mat-card-content><b class="mx-3">{{i+1}}.</b >{{q.content}}
+            <mat-divider class="mt-2"></mat-divider>
+        <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            color="warn"
+            [(ngModel)]="q.userAns"
+            >
+            <mat-radio-button class="example-radio-button" [value]="q.option1">{{q.option1}}</mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="q.option2">{{q.option2}}</mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="q.option3">{{q.option3}}</mat-radio-button>
+            <mat-radio-button class="example-radio-button" [value]="q.option4">{{q.option4}}</mat-radio-button>
+          </mat-radio-group>
+        </mat-card-content>
+        </mat-card>
+        <div class="text-center">
+            <button mat-flat-button (click)="submitHandler()">Submit Quiz</button>
+        </div>
+      </div>
+</div>
+<div class="container mt-5" *ngIf="hasSubmitted">
+    <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
+        <h1 class="display-4">Thank you! Your score has been recorded! </h1>
+        <p class="lead">{{quiz.title}} </p>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <b> Name :   {{user.firstName}} {{user.lastName}}</b> 
+            </div>
+            <div class="col-md-6 text-right">
+                <b class="mx-5 text-right">username: {{user.username}}</b>
+            </div>
+        </div>
+        <hr class="my-4">
+        <h2 class="display-4 "><i>Quiz Summary</i></h2>
+        <ul>
+            <li >Number of Questions Attempted: <b>{{nosAttempted}}</b></li>
+            <li >Total Score: <b>{{nosCorrect}}/{{quiz.noOfQuestions}}</b>.</li>
+            <li >Total Marks <b>{{marksScored}}</b></li>
+        </ul>
+        <div class="text-center">
+            <button mat-raised-button color="accent" (click)="endQuiz()" >End Quiz </button>
+        </div>
+</div>
