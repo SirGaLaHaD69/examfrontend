@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!hasAppeared">
     <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
         <h1 class="display-4">{{quiz.title}}</h1>
         <p class="lead">{{quiz.description}}</p>
@@ -26,4 +26,25 @@
             <button mat-raised-button color="warn" (click)="startQuiz()" >Start Quiz </button>
         </div>
       </div>
+</div>
+
+
+<div class="container mt-5" *ngIf="hasAppeared">
+    <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
+        <h1 class="display-4">You have already appeared this Quiz </h1>
+        <p class="lead">{{quiz.title}} </p>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-md-6">
+                <b> Name :   {{user.firstName}} {{user.lastName}}</b> 
+            </div>
+            <div class="col-md-6 text-right">
+                <b class="mx-5 text-right">username: {{user.username}}</b>
+            </div>
+        </div>
+        <hr class="my-4">
+        <h2 class="display-4 "><i>Score: </i> {{marksScored}} / {{totalMarks}}</h2>
+        <div class="text-center">
+            <button mat-raised-button [routerLink]="['/user-dashboard/quiz/0']" routerLinkActive="router-link-active"  >Back</button>
+        </div>
 </div>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { QuestionService } from 'src/app/services/question.service';
+import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +17,7 @@ export class LiveQuizComponent implements OnInit {
   quiz:any
   user:any;
   questions=[]
+  timer:any;
   nosAttempted:number=0;
   marksScored:number=0;
   nosCorrect:number=0;
@@ -26,7 +28,8 @@ export class LiveQuizComponent implements OnInit {
     private questionServ:QuestionService,
     private login:LoginService,
     private router:Router,
-    private nav:NavbarService
+    private nav:NavbarService,
+    private quizService:QuizService
     ) { }
 
   ngOnInit(): void {
@@ -36,9 +39,11 @@ export class LiveQuizComponent implements OnInit {
     this.user=this.login.getUser();
     this.questionServ.getQuestionByQuizId(this.quiz.id).subscribe((data:any)=>{
       this.questions=data;
+      this.timer=this.questions.length*2*60;
       this.questions.forEach((q:any)=>{
-        q['userAns']='';
+        delete q['ans'];
       })
+      this.startTimer();
     },
     (err)=>{
       Swal.fire({title:"Something went wrong!\nPlease Login again",icon:'error'});
@@ -65,6 +70,21 @@ export class LiveQuizComponent implements OnInit {
       }
     })
   }
+  timerFormat(){
+    let mm = Math.floor(this.timer/60);
+    let ss = this.timer%60;
+    return `${mm} min: ${ss} secs`;
+  }
+  startTimer(){
+    setInterval(()=>{
+      if(this.timer<=0){
+        this.hasSubmitted=true;
+          this.calMarks();
+      }else{
+        this.timer--;
+      }
+    },1000)
+  }
   fullScreen() {
     let elem = document.documentElement;
     let methodToBeInvoked = elem.requestFullscreen
@@ -73,16 +93,28 @@ export class LiveQuizComponent implements OnInit {
   }
 
   calMarks(){
-    this.questions.forEach((q:any)=>{
-      const mark=+(this.quiz.maxMarks/this.quiz.noOfQuestions);
-      if(q.userAns!==''){
-        this.nosAttempted++;
-        if(q.userAns==q.ans){
-          this.nosCorrect++
-          this.marksScored+=mark;
-        }
-      }
+    // this.questions.forEach((q:any)=>{
+    //   const mark=+(this.quiz.maxMarks/this.quiz.noOfQuestions);
+    //   if(q.userAns!==''){
+    //     this.nosAttempted++;
+    //     if(q.userAns==q.ans){
+    //       this.nosCorrect++
+    //       this.marksScored+=mark;
+    //     }
+    //   }
+    // })
+    this.questionServ.evaluateQuiz(this.questions).subscribe((data:any)=>{
+        this.nosAttempted=data.nosAttempted;
+        this.marksScored=data.marksScored;
+        this.nosCorrect=data.nosCorrect;
+        this.quizService.submitResponse(this.user.id,this.quiz.id,this.marksScored,this.quiz.maxMarks).subscribe(data=>{
+          console.log("Response Submittd Successfully");
+        },err=>{
+          console.log(err);
+          
+        })
     })
+      
   }
   submitHandler(){
     Swal.fire({

@@ -45,7 +45,8 @@ import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
 import { AdminGuard } from './services/guards/admin.guard';
 import { GuestGuard } from './services/guards/guest.guard';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -89,7 +90,12 @@ import {MatRadioModule} from '@angular/material/radio';
     MatTableModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    })
   ],
   providers: [AuthInterceptorProvider,UserService,LoginService,QuestionService,QuizService,QuizResolverService,LeaveQuizGuardService,AdminGuard,GuestGuard],
   bootstrap: [AppComponent]

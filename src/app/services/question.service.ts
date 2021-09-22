@@ -18,4 +18,8 @@ export class QuestionService {
   deleteQuestion(id:any){
     return this.http.delete(`${API}/question/${id}`);
   }
+  evaluateQuiz(questions:any){
+    return this.http.post(`${API}/question/eval`,questions);
+  }
+  
 }
