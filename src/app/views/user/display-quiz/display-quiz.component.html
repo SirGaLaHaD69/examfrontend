@@ -1,6 +1,11 @@
 
 <div class="container-fuild">
-    <h3 *ngIf="quizzesOfSub.length==0">No Quizzes</h3>
+    <div class="container mt-5" *ngIf="quizzesOfSub.length==0">
+        <div class="jumbotron" style="background-color:rgba(229, 239, 243, 0.726);">
+            <h1 class="display-4">NO Quizzes </h1>
+            <hr class="my-4">
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4 my-3" *ngFor="let q of quizzesOfSub">
             <mat-card class="example-card">
