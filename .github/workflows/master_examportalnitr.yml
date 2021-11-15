@@ -53,4 +53,4 @@ jobs:
           app-name: 'examportalnitr'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0EEE56E32B994D90AFCCD1EB167CA1EB }}
-          package: ./dist/examfrontend
+          package: './dist/examfrontend'
