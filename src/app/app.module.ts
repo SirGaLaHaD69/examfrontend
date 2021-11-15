@@ -41,7 +41,7 @@ import { QuizResolverService } from './services/quiz-resolver.service';
 import { QuestionService } from './services/question.service';
 import { QuizService } from './services/quiz.service';
 import { LiveQuizComponent } from './views/user/live-quiz/live-quiz.component';
-import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
+import { LeaveQuizGuardService } from './services/guards/leave-quiz-guard.service';
 import { AdminGuard } from './services/guards/admin.guard';
 import { GuestGuard } from './services/guards/guest.guard';
 import {MatRadioModule} from '@angular/material/radio';

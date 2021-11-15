@@ -6,7 +6,7 @@ import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { SubjectListComponent } from './components/subject-list/subject-list.component';
 import { AdminGuard } from './services/guards/admin.guard';
 import { GuestGuard } from './services/guards/guest.guard';
-import { LeaveQuizGuardService } from './services/leave-quiz-guard.service';
+import { LeaveQuizGuardService } from './services/guards/leave-quiz-guard.service';
 import { QuizResolverService } from './services/quiz-resolver.service';
 import { AddQuestionComponent } from './views/admin/add-question/add-question.component';
 import { AddQuizComponent } from './views/admin/add-quiz/add-quiz.component';
