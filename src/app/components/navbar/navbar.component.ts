@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(public login:LoginService,
     private router:Router,
-    private nav:NavbarService) {
+    public nav:NavbarService) {
 
   }
 
