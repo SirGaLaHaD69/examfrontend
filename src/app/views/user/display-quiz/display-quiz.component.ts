@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class DisplayQuizComponent implements OnInit {
 
-  quizzes=[]
-  quizzesOfSub=[]
+  quizzes:any
+  quizzesOfSub:any
   subCode:any;
   constructor(private route:ActivatedRoute,
     private quizService:QuizService,

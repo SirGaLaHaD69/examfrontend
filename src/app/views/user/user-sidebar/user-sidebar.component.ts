@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class UserSidebarComponent implements OnInit {
 
-  subjects=[]
+  subjects:any
   borderStyles:any ={ 'border': "solid 2px rgb(140, 203, 228)",'border-radius': "5px",'margin-top':"2px"};
   constructor(private subjectService:SubjectService,
     private login:LoginService,

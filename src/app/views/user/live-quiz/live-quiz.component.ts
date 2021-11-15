@@ -16,7 +16,7 @@ export class LiveQuizComponent implements OnInit {
 
   quiz:any
   user:any;
-  questions=[]
+  questions:any
   timer:any;
   nosAttempted:number=0;
   marksScored:number=0;
